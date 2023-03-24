@@ -42,12 +42,11 @@ function showCharacter(character) {
     `<article>
   <img src=${character["image"]}>
   <h2>${character["name"]}</h2>
-  <p>${character["house"]}</p>
-  <P>${character["ancestry"]}</P>
-  <p>Date of Birth: ${character["dateOfBirth"]}</p>
-  <p>Eye colour: ${character["eyeColour"]}</p>
-  <p>Hair colour: ${character["hairColour"]}</p>
-  <p>${character["name"]} is played by ${character["actor"]}</p>
+  <p>${character["gender"]}</p>
+  <P>${character["nickname"]}</P>
+  <p>${character["catchPhrase"]}</p>
+  <p>Hair colour: ${character["hairColor"]}</p>
+  <p>${character["name"]} is played by ${character["voicedBy"]}</p>
   </article>`;
 
   document.querySelector("#characters").insertAdjacentHTML("beforeend", myHTML);
