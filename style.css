@@ -1,0 +1,61 @@
+header {
+  background-color: coral;
+}
+
+body {
+  background-color: lightslategray;
+}
+
+footer {
+  background-color: coral;
+}
+
+html {
+  color: orange;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* grid */
+
+.grid-rows {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  padding: 1.5em;
+}
+
+@media (min-width: 800px) {
+  .grid-rows {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid-rows {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1400px) {
+  .grid-rows {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.grid-rows img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+
+.grid-rows > article {
+  padding: 2em;
+  background-color: white;
+  cursor: pointer;
+}
+
+.grid-rows p {
+  margin: 0.5em 0;
+}
