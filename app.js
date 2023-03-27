@@ -10,16 +10,21 @@ async function initApp() {
     "https://raw.githubusercontent.com/luma0001/Data-V1-project/07f6ce395a9b87079df42f68b35483f405eb0c21/scott.json"
   );
 
-  //     https://raw.githubusercontent.com/TheDanishMexican/object-south-park/main/data/app.json
-  //     https://raw.githubusercontent.com/Asbjoernemil/data-assignment/main/data/characters.json
+  const fecthNext = await fetch(
+    "https://raw.githubusercontent.com/Asbjoernemil/data-assignment/main/data/characters.json"
+  );
+  // "https://raw.githubusercontent.com/TheDanishMexican/object-south-park/main/data/app.json"
+
+  //
 
   const scottMalkinson = await fetchScott.json();
+  const nextCharacter = await fecthNext.json();
 
   console.log(scottMalkinson);
 
   //   getCharacter(character);
   showCharacter(scottMalkinson);
-  showCharacter(scottMalkinson);
+  showCharacter(nextCharacter);
   showCharacter(scottMalkinson);
   showCharacter(scottMalkinson);
   showCharacter(scottMalkinson);
