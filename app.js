@@ -2,32 +2,28 @@
 
 window.addEventListener("load", initApp);
 
+const approved = [];
+
 // Fetches the json objects
 async function initApp() {
   console.log("initApp");
 
-  const fetchScott = await fetch(
-    "https://raw.githubusercontent.com/luma0001/Data-V1-project/07f6ce395a9b87079df42f68b35483f405eb0c21/scott.json"
+  const promise = await fetch(
+    "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
+  const characters = await promise.json();
 
-  const fecthNext = await fetch(
-    "https://raw.githubusercontent.com/Asbjoernemil/data-assignment/main/data/characters.json"
-  );
-  // "https://raw.githubusercontent.com/TheDanishMexican/object-south-park/main/data/app.json"
+  characters.forEach(noDoubles);
+  console.log(approved);
+  approved.forEach(showCharacter);
+}
 
-  //
-
-  const scottMalkinson = await fetchScott.json();
-  const nextCharacter = await fecthNext.json();
-
-  console.log(scottMalkinson);
-
-  //   getCharacter(character);
-  showCharacter(scottMalkinson);
-  showCharacter(nextCharacter);
-  showCharacter(scottMalkinson);
-  showCharacter(scottMalkinson);
-  showCharacter(scottMalkinson);
+function noDoubles(element) {
+  const person = element["name"];
+  if (approved.includes(person) == false) {
+    approved.push(element);
+  } else {
+  }
 }
 
 // Creates the HTML element for the character
