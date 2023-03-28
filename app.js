@@ -8,40 +8,40 @@ let approved = [];
 async function initApp() {
   console.log("initApp");
 
-  //  What if grade = None, null, "undefined" or "" ?
-  //  first episode = undefined...
-  //  Catchphrase: null --> ""
-  // Religion: undefined
-
   const promise = await fetch(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
   const characters = await promise.json();
 
-  characters.forEach(noDoubles);
+  // characters.forEach(noDoubles);
+  for (let index = 0; index < characters.length; index++) {
+    const person = characters[index];
+    noDoubles(person);
+  }
   console.log(approved);
   approved.forEach(showCharacter);
 }
 
 function noDoubles(element) {
-  // const person = element["name"];
-  if (approved.includes(element) == false) {
-    console.log(approved.includes(element));
+  const person = element["name"];
+  if (approved.includes(element["name"]) == false) {
+    console.log(element["name"], approved.includes(element));
+    //apend?
     approved.push(element);
   } else {
     console.log("Double");
   }
 }
 
-function noNull(value) {
-  let element;
-  if (value == null || value == "" || value == undefined) {
-    element = `<p>Religion: unknown</p>`;
-  } else {
-    element = `<p>Relegion: ${value}</p>`;
-  }
-  return value;
-}
+// function noNull(value) {
+//   let element;
+//   if (value == null) {
+//     element = `<p>Religion: unknown</p>`;
+//   } else {
+//     element = `<p>Relegion: ${value}</p>`;
+//   }
+//   return value;
+// }
 
 // Creates the HTML element for the character
 function showCharacter(character) {
@@ -49,7 +49,7 @@ function showCharacter(character) {
   const myHTML = /*html*/ `<article>
   <img src=${character["image"]}>
   <h2>Name: ${character["name"]}</h2>
-  <p>Gender: ${character["gender"]}</p>
+  <<p>Gender: ${character["gender"]}</p>
   <P>Nick Name: ${character["nickname"]}</P>
   <p>Catch phrase: ${character["catchPhrase"]}</p>
   <p>Hair colour: ${character["hairColor"]}</p>
@@ -58,6 +58,7 @@ function showCharacter(character) {
 
   document.querySelector("#characters").insertAdjacentHTML("beforeend", myHTML);
 
+  // Man kan også bruge et Call Back istedet for Modal Function...
   document
     .querySelector("#characters article:last-child")
     .addEventListener("click", characterClicked);
