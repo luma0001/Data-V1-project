@@ -2,11 +2,16 @@
 
 window.addEventListener("load", initApp);
 
-const approved = [];
+let approved = [];
 
 // Fetches the json objects
 async function initApp() {
   console.log("initApp");
+
+  //  What if grade = None, null, "undefined" or "" ?
+  //  first episode = undefined...
+  //  Catchphrase: null --> ""
+  // Religion: undefined
 
   const promise = await fetch(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
@@ -19,16 +24,28 @@ async function initApp() {
 }
 
 function noDoubles(element) {
-  const person = element["name"];
-  if (approved.includes(person) == false) {
+  // const person = element["name"];
+  if (approved.includes(element) == false) {
+    console.log(approved.includes(element));
     approved.push(element);
   } else {
+    console.log("Double");
   }
+}
+
+function noNull(value) {
+  let element;
+  if (value == null || value == "" || value == undefined) {
+    element = `<p>Religion: unknown</p>`;
+  } else {
+    element = `<p>Relegion: ${value}</p>`;
+  }
+  return value;
 }
 
 // Creates the HTML element for the character
 function showCharacter(character) {
-  console.log(character["image"]);
+  // console.log(character["image"]);
   const myHTML = /*html*/ `<article>
   <img src=${character["image"]}>
   <h2>Name: ${character["name"]}</h2>

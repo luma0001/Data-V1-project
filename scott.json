@@ -1,7 +1,7 @@
 {
   "name": "Scott Malkinson",
   "nickname": "Captain Diabetes",
-  "image": "https://static.wikia.nocookie.net/southpark/images/a/a1/ScottMalkinson_2.png/revision/latest?cb=20211125042917",
+  "image": "https://i.pinimg.com/474x/d9/1d/3b/d91d3bbf38b4a33e1c2ad5c2c672d96c.jpg",
   "occupation": "student",
   "age": 9,
   "voicedBy": "Matt Stone",
@@ -10,15 +10,7 @@
   "catchPhrase": "I have Diabetes",
   "hairColor": "brown",
   "schoolGrade": 4,
-  "episodes": [
-    "S12E13",
-    "S13E09",
-    "S17E08",
-    "S17E09",
-    "S26E01",
-    "S18E02",
-    "S26E03"
-  ],
+  "episodes": "S12E13,S13E09,S17E08,S17E09,S26E01,S18E02,S26E03",
   "appearances": 7,
-  "firstAppearance": ["Elementary School Musical", "S12E13"]
+  "firstAppearance": "Elementary School Musical S12E13"
 }
