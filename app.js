@@ -33,6 +33,8 @@ function noDoubles(element) {
   }
 }
 
+function y() {}
+
 // function noNull(value) {
 //   let element;
 //   if (value == null) {
@@ -49,7 +51,7 @@ function showCharacter(character) {
   const myHTML = /*html*/ `<article>
   <img src=${character["image"]}>
   <h2>Name: ${character["name"]}</h2>
-  <<p>Gender: ${character["gender"]}</p>
+  <p>Gender: ${character["gender"]}</p>
   <P>Nick Name: ${character["nickname"]}</P>
   <p>Catch phrase: ${character["catchPhrase"]}</p>
   <p>Hair colour: ${character["hairColor"]}</p>
