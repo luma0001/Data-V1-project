@@ -2,14 +2,20 @@
 
 window.addEventListener("load", initApp);
 
-// Fetches the json objects
 async function initApp() {
   console.log("initApp");
 
   const characters = await getJson();
+  // det her kan umuligt virke bare sådan. Vi skal have character.age somehow....
+  // characters["age"].sort(byApperance);
   runShowCharacter(characters);
 }
 
+// function byApperance(characterA, characterB) {
+//   return characterB - characterA;
+// }
+
+// Fetches the json objects
 async function getJson() {
   const promise = await fetch(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
@@ -19,6 +25,7 @@ async function getJson() {
   return figures;
 }
 
+//Loops every object in the json array and calls showCharacter.
 function runShowCharacter(characters) {
   for (let index = 0; index < characters.length; index++) {
     const person = characters[index];
@@ -26,6 +33,7 @@ function runShowCharacter(characters) {
   }
 }
 
+//Returns a value responding to classes for css styling, depending on character age.
 function checkAge(character) {
   const age = character["age"];
   let setClass;
@@ -47,7 +55,7 @@ function showCharacter(character) {
   console.log(character["image"]);
   const myHTML = /*html*/ `<article class=${ageColor}>
   <img src=${character["image"]}>
-  <h2>Name: ${character["name"]}</h2>
+  <h2>${character["name"]}</h2>
   <p>Gender: ${character["gender"]}</p>
   <P>Nick Name: ${character["nickname"]}</P>
   <p>Catch phrase: ${character["catchPhrase"]}</p>
@@ -67,8 +75,9 @@ function showCharacter(character) {
     console.log("Clicked");
     const phrase = catchPhraseContent(character);
 
-    // const dialogColor = checkAge(character.age);
-    // document.querySelector("#dialogCharacter").classList.add(dialogColor);
+    const dialog = document.querySelector("dialog");
+    dialog.setAttribute("data-theme", ageColor.toLowerCase());
+    dialog.showModal();
 
     // Hard coded
     document.querySelector("#dialogImage").src = character.image;
