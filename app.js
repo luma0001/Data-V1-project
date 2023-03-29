@@ -26,10 +26,26 @@ function runShowCharacter(characters) {
   }
 }
 
+function checkAge(character) {
+  const age = character["age"];
+  let setClass;
+  if (age < 13) {
+    setClass = "ageChild";
+  } else if (age < 29) {
+    setClass = "ageYoung";
+  } else if (age < 49) {
+    setClass = "ageAdult";
+  } else setClass = "ageSenior";
+
+  return setClass;
+}
+
 // Creates the HTML element for the character
 function showCharacter(character) {
+  const ageColor = checkAge(character);
+
   console.log(character["image"]);
-  const myHTML = /*html*/ `<article>
+  const myHTML = /*html*/ `<article class=${ageColor}>
   <img src=${character["image"]}>
   <h2>Name: ${character["name"]}</h2>
   <p>Gender: ${character["gender"]}</p>
@@ -50,6 +66,9 @@ function showCharacter(character) {
   function characterClicked() {
     console.log("Clicked");
     const phrase = catchPhraseContent(character);
+
+    // const dialogColor = checkAge(character.age);
+    // document.querySelector("#dialogCharacter").classList.add(dialogColor);
 
     // Hard coded
     document.querySelector("#dialogImage").src = character.image;
@@ -89,7 +108,7 @@ function showCharacter(character) {
     document.querySelector("#dialogCharacter").showModal();
   }
 }
-
+// Theoretically checks if the value is null or not...
 function catchPhraseContent(character) {
   console.log("phrase run");
   let output = "";

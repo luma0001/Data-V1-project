@@ -11,7 +11,7 @@ footer {
 }
 
 html {
-  color: orange;
+  color: black;
   font-family: sans-serif;
   height: 100%;
   width: 100%;
@@ -66,13 +66,13 @@ img {
 .grid-container > article {
   box-shadow: 1px 1px 8px orange;
   padding: 1.5em;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   cursor: pointer;
 }
 
 .grid-container > article:hover {
   box-shadow: 0 8px 16px 0 rgb(255, 77, 0);
-  color: black;
+  color: orange;
 }
 
 .grid-container img {
@@ -126,7 +126,24 @@ button:hover {
   color: black;
   background-color: white;
 }
-h2::first-letter {
+
+.ageChild {
+  background-color: rgb(178, 229, 243);
+}
+
+.ageYoung {
+  background-color: rgb(183, 211, 253);
+}
+
+.ageAdult {
+  background-color: rgb(126, 183, 231);
+}
+
+.ageSenior {
+  background-color: rgb(67, 92, 146);
+}
+
+/* h2::first-letter {
   font-size: 40px;
   color: black;
-}
+} */
