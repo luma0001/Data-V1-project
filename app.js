@@ -26,18 +26,6 @@ function runShowCharacter(characters) {
   }
 }
 
-function ageTheme (age){
- let newHTML
-   if(age > 10){
- `class = `;
- } if else(age > 60){
-   `class = `;
-}else{
- `class = `;
-}
-return newHTML;
-}
-
 // Creates the HTML element for the character
 function showCharacter(character) {
   console.log(character["image"]);
@@ -60,6 +48,9 @@ function showCharacter(character) {
 
   // Connects the character info to the DIALOG HTML elements
   function characterClicked() {
+    console.log("Clicked");
+    const phrase = catchPhraseContent(character.catchPhrase);
+
     // Hard coded
     document.querySelector("#dialogImage").src = character.image;
     document.querySelector(
@@ -68,9 +59,8 @@ function showCharacter(character) {
     document.querySelector(
       "#dialogGender"
     ).textContent = `Gender: ${character.gender}`;
-    document.querySelector(
-      "#dialogPhrase"
-    ).textContent = `Catchphrase:  ${character.catchPhrase}`;
+    document.querySelector("#dialogPhrase").textContent = phrase;
+    //`Catchphrase: ${character.catchPhrase}`;
     document.querySelector(
       "#dialogNickname"
     ).textContent = `Nickname:  ${character.nickname}`;
@@ -99,4 +89,15 @@ function showCharacter(character) {
 
     document.querySelector("#dialogCharacter").showModal();
   }
+}
+
+function catchPhraseContent(catchPhrase) {
+  console.log("phrase run");
+  let output = "";
+  if (catchPhrase == null) {
+    output = `${character.name} has so catch phrase`;
+  } else {
+    output = `Catchphrase:  ${character.catchPhrase}`;
+  }
+  return output;
 }

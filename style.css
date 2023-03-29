@@ -126,12 +126,3 @@ button:hover {
   color: black;
   background-color: white;
 }
-
-dialog[data-theme="lowAge"] {
-  background-color: rgb(99, 99, 255);
-}
-/*
-.medAge {
-}
-
-.highAge; */
