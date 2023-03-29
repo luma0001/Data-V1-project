@@ -49,7 +49,7 @@ function showCharacter(character) {
   // Connects the character info to the DIALOG HTML elements
   function characterClicked() {
     console.log("Clicked");
-    const phrase = catchPhraseContent(character.catchPhrase);
+    const phrase = catchPhraseContent(character);
 
     // Hard coded
     document.querySelector("#dialogImage").src = character.image;
@@ -60,7 +60,6 @@ function showCharacter(character) {
       "#dialogGender"
     ).textContent = `Gender: ${character.gender}`;
     document.querySelector("#dialogPhrase").textContent = phrase;
-    //`Catchphrase: ${character.catchPhrase}`;
     document.querySelector(
       "#dialogNickname"
     ).textContent = `Nickname:  ${character.nickname}`;
@@ -91,13 +90,17 @@ function showCharacter(character) {
   }
 }
 
-function catchPhraseContent(catchPhrase) {
+function catchPhraseContent(character) {
   console.log("phrase run");
   let output = "";
-  if (catchPhrase == null) {
-    output = `${character.name} has so catch phrase`;
-  } else {
+  if (character.catchPhrase != null) {
     output = `Catchphrase:  ${character.catchPhrase}`;
+  } else {
+    output = `${character.name} has so catch phrase`;
   }
   return output;
 }
+
+// character.catchPhrase === null ? console.log("false") : console.log("true");
+
+// function test();
