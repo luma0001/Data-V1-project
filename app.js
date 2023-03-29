@@ -6,14 +6,15 @@ async function initApp() {
   console.log("initApp");
 
   const characters = await getJson();
-  // det her kan umuligt virke bare sådan. Vi skal have character.age somehow....
-  // characters["age"].sort(byApperance);
-  runShowCharacter(characters);
+  const sorted = characters.sort(byApperance);
+  console.log("new " + sorted);
+  runShowCharacter(sorted);
 }
 
-// function byApperance(characterA, characterB) {
-//   return characterB - characterA;
-// }
+// det her kan umuligt virke bare sådan. Vi skal have character.age somehow....
+function byApperance(characterA, characterB) {
+  return characterB - characterA;
+}
 
 // Fetches the json objects
 async function getJson() {
