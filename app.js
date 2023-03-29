@@ -2,52 +2,45 @@
 
 window.addEventListener("load", initApp);
 
-let approved = [];
-
 // Fetches the json objects
 async function initApp() {
   console.log("initApp");
 
+  const characters = await getJson();
+  runShowCharacter(characters);
+}
+
+async function getJson() {
   const promise = await fetch(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
-  const characters = await promise.json();
+  const figures = await promise.json();
 
-  // characters.forEach(noDoubles);
+  return figures;
+}
+
+function runShowCharacter(characters) {
   for (let index = 0; index < characters.length; index++) {
     const person = characters[index];
-    noDoubles(person);
-  }
-  console.log(approved);
-  approved.forEach(showCharacter);
-}
-
-function noDoubles(element) {
-  const person = element["name"];
-  if (approved.includes(element["name"]) == false) {
-    console.log(element["name"], approved.includes(element));
-    //apend?
-    approved.push(element);
-  } else {
-    console.log("Double");
+    showCharacter(person);
   }
 }
 
-function y() {}
-
-// function noNull(value) {
-//   let element;
-//   if (value == null) {
-//     element = `<p>Religion: unknown</p>`;
-//   } else {
-//     element = `<p>Relegion: ${value}</p>`;
-//   }
-//   return value;
-// }
+function ageTheme (age){
+ let newHTML
+   if(age > 10){
+ `class = `;
+ } if else(age > 60){
+   `class = `;
+}else{
+ `class = `;
+}
+return newHTML;
+}
 
 // Creates the HTML element for the character
 function showCharacter(character) {
-  // console.log(character["image"]);
+  console.log(character["image"]);
   const myHTML = /*html*/ `<article>
   <img src=${character["image"]}>
   <h2>Name: ${character["name"]}</h2>
