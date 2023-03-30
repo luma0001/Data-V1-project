@@ -77,7 +77,7 @@ function showCharacter(character) {
     const phrase = catchPhraseContent(character);
 
     const dialog = document.querySelector("dialog");
-    dialog.setAttribute("data-theme", ageColor.toLowerCase());
+    dialog.setAttribute("data-theme", ageColor);
     dialog.showModal();
 
     // Hard coded
