@@ -6,14 +6,13 @@ async function initApp() {
   console.log("initApp");
 
   const characters = await getJson();
-  const sorted = characters.sort(byApperance);
-  console.log("new " + sorted);
-  runShowCharacter(sorted);
-}
 
-// det her kan umuligt virke bare sådan. Vi skal have character.age somehow....
-function byApperance(characterA, characterB) {
-  return characterB - characterA;
+  // Soultuion found at https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+  // Sorts the array of objects by character.apperance from hihgest to lowest
+  const sorted = characters.sort((a, b) =>
+    a.appearances > b.appearances ? -1 : 1
+  );
+  runShowCharacter(sorted);
 }
 
 // Fetches the json objects
@@ -52,6 +51,7 @@ function checkAge(character) {
 // Creates the HTML element for the character
 function showCharacter(character) {
   const ageColor = checkAge(character);
+  const phrase = catchPhraseContent(character);
 
   console.log(character["image"]);
   const myHTML = /*html*/ `<article class=${ageColor}>
@@ -59,14 +59,14 @@ function showCharacter(character) {
   <h2>${character["name"]}</h2>
   <p>Gender: ${character["gender"]}</p>
   <P>Nick Name: ${character["nickname"]}</P>
-  <p>Catch phrase: ${character["catchPhrase"]}</p>
+  <p>${phrase}</p>
   <p>Hair colour: ${character["hairColor"]}</p>
   <p>${character["name"]} is played by ${character["voicedBy"]}</p>
   </article>`;
 
   document.querySelector("#characters").insertAdjacentHTML("beforeend", myHTML);
 
-  // Man kan også bruge et Call Back istedet for Modal Function...
+  // NB: Man kan også bruge et Call Back istedet for Modal Function...
   document
     .querySelector("#characters article:last-child")
     .addEventListener("click", characterClicked);
@@ -74,7 +74,6 @@ function showCharacter(character) {
   // Connects the character info to the DIALOG HTML elements
   function characterClicked() {
     console.log("Clicked");
-    const phrase = catchPhraseContent(character);
 
     const dialog = document.querySelector("dialog");
     dialog.setAttribute("data-theme", ageColor);
@@ -118,14 +117,13 @@ function showCharacter(character) {
     document.querySelector("#dialogCharacter").showModal();
   }
 }
-// Theoretically checks if the value is null or not...
+// Checks if the value is null or not, returns different strings based on the result
 function catchPhraseContent(character) {
-  console.log("phrase run");
   let output = "";
-  if (character.catchPhrase != null) {
+  if (character.catchPhrase != "null") {
     output = `Catchphrase:  ${character.catchPhrase}`;
   } else {
-    output = `${character.name} has so catch phrase`;
+    output = `${character.name} has no catch phrase`;
   }
   return output;
 }
